@@ -1,6 +1,6 @@
 <?php
 
-namespace RustyMcFly\Bundles\src;
+namespace RustyMcFly\Bundles;
 
 use Shopware\Core\Framework\Plugin;
 

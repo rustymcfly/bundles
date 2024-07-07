@@ -1,0 +1,9 @@
+{
+  "plugin": {
+    "RustyMcFly": {
+      "Bundles": {
+        "contains": "Bundle contains"
+      }
+    }
+  }
+}

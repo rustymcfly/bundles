@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../../../public/administration",
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "target": "es2020",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "allowJs": true,
+    "sourceMap": true,
+    "moduleResolution": "Node",
+    "baseUrl": "."
+  },
+  "files": [
+    "../../../../../../../vendor/shopware/administration/Resources/app/administration/src/html-shim.d.ts",
+    "../../../../../../../vendor/shopware/administration/Resources/app/administration/src/global.types.ts"
+  ],
+  "include": [
+    "./**/*.ts",
+    "./**/*.vue",
+    "./**/*.html.twig"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

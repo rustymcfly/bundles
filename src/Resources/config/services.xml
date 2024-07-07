@@ -1,0 +1,31 @@
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="RustyMcFly\Bundles\Content\Product\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+        <service id="RustyMcFly\Bundles\Content\BundleMapping\BundleMappingDefinition">
+            <tag name="shopware.entity.definition"  entity="rustymcfly_bundles_mapping"/>
+        </service>
+        <service id="RustyMcFly\Bundles\Subscriber\ProductLoadedSubscriber">
+            <argument type="service" id="rustymcfly_bundles_mapping.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Product\Cart\ProductGateway"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="RustyMcFly\Bundles\Content\Cart\BundleLineItemFactoryHandler">
+            <argument type="service" id="Shopware\Core\Checkout\Cart\LineItemFactoryRegistry"/>
+            <tag name="shopware.cart.line_item.factory"/>
+        </service>
+        <service id="RustyMcFly\Bundles\Content\Cart\BundleCartProcessor">
+            <argument type="service" id="Shopware\Core\Content\Product\Cart\ProductGateway"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator"/>
+            <tag name="shopware.cart.processor"/>
+            <tag name="shopware.cart.collector"/>
+        </service>
+        <service id="RustyMcFly\Bundles\Content\Product\ProductPriceCalculator" decorates="Shopware\Core\Content\Product\SalesChannel\Price\ProductPriceCalculator">
+            <argument type="service" id="RustyMcFly\Bundles\Content\Product\ProductPriceCalculator.inner"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,9 @@
+{% sw_extends "@Storefront/storefront/component/line-item/line-item.html.twig" %}
+
+{% block component_line_item_type_include %}
+    {% if lineItem.type == 'bundle' %}
+        {% sw_include '@Storefront/storefront/component/line-item/type/bundle.html.twig' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

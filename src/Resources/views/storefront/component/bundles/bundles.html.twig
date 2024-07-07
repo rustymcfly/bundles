@@ -1,0 +1,61 @@
+{% if product.extensions.bundleContents|length %}
+    <div class="container-fluid px-0 my-3">
+        <h4>Bundle Besteht aus:</h4>
+        <div class="row gy-3">
+            {% set completePrice = 0 %}
+            {% for item in product.extensions.bundleContents %}
+                <div class="col-2">
+                    {% set attributes = {
+                        'class': 'product-detail-manufacturer-logo',
+                        'alt': item.product.manufacturer.translated.name,
+                        'title': item.product.manufacturer.translated.name
+                    } %}
+                    {% sw_thumbnails 'product-image-thumbnails' with {
+                        media: item.product.cover.media,
+                        sizes: {
+                            'default': '200px'
+                        }
+                    } %}
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                    {{ item.quantity }} <span>&times;</span> {{ item.product.translated.name }}
+                </div>
+                <div class="col-2 d-flex align-items-center">
+                    {{ item.product.calculatedPrice.unitPrice|currency }}
+                </div>
+                <div class="col-2 d-flex align-items-center">
+                    {{ (item.product.calculatedPrice.unitPrice * item.quantity)|currency }}
+
+                    {% set completePrice = completePrice + (item.product.calculatedPrice.unitPrice * item.quantity) %}
+                </div>
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][id]"
+                       value="{{ item.product.id }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][type]"
+                       value="product">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][quantity]"
+                       value="{{ item.quantity }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][referencedId]"
+                       value="{{ item.product.id }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][stackable]"
+                       value="1">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][label]"
+                       value="{{ item.product.translated.name }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][productNumber]"
+                       value="{{ item.product.productNumber }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][children][{{ item.product.id }}][removable]"
+                       value="0">
+            {% endfor %}
+            <input type="hidden"
+                   name="lineItems[{{ product.id }}][type]"
+                   value="bundle">
+        </div>
+    </div>
+{% endif %}
