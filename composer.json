@@ -1,0 +1,39 @@
+{
+  "name": "rustymcfly/bundles",
+  "description": "The Theme for hogenbejn.de",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Martin Flogaus",
+      "email": "hello@martin-flogaus.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "RustyMcFly\\Bundles\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "^6.5"
+  },
+  "extra": {
+    "description": {
+      "de-DE": "Bundles plugin",
+      "en-GB": "Bundles plugin"
+    },
+    "manufacturerLink": {
+      "de-DE": "martin-flogaus.de",
+      "en-GB": "martin-flogaus.de"
+    },
+    "supportLink": {
+      "de-DE": "martin-flogaus.de",
+      "en-GB": "martin-flogaus.de"
+    },
+    "shopware-plugin-class": "RustyMcFly\\Bundles\\Bundles",
+    "label": {
+      "de-DE": "Bundles plugin",
+      "en-GB": "Bundles plugin"
+    }
+  }
+}
