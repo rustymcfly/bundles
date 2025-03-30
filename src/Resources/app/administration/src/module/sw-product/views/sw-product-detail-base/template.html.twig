@@ -1,6 +1,6 @@
 {% block sw_product_detail_base_price_card %}
     <sw-card position-identifier="top">
-        <sw-entity-multi-select v-model="product.extensions.bundleContents" labelProperty="translated.name" :label="$t('plugin.RustyMcFly.Bundles.contains')"/>
+        <sw-entity-multi-select v-model:entityCollection="product.extensions.bundleContents" labelProperty="translated.name" :label="$t('plugin.RustyMcFly.Bundles.contains')"/>
         <sw-entity-listing v-if="bundleContents" :criteria="bundleContentCriteria" :showSelection="false"  :showActions="true" :allowDelete="false" :items="bundleContents" :fullPage="false" :columns="bundleColumns" :repository="bundleRepository">
 
         </sw-entity-listing>

@@ -45,7 +45,7 @@ class ProductPriceCalculator extends AbstractProductPriceCalculator
                         $oldPrice->getTotalPrice() * $bundle->getQuantity(),
                         $oldPrice->getCalculatedTaxes(),
                         $oldPrice->getTaxRules(),
-                         $bundle->getQuantity()
+                         $bundle->getQuantity() ?? 1
                     );
                     $bundle->getProduct()->calculatedPrice = $price;
                     $bundle->getProduct()->calculatedPrices = new PriceCollection();

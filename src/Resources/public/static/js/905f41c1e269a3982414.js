@@ -1,0 +1,1 @@
+"use strict";(window.webpackJsonpPluginbundles=window.webpackJsonpPluginbundles||[]).push([[435],{435:function(n,t,e){e.r(t),t.default={computed:{productCriteria(){let n=this.$super("productCriteria");return n.addAssociation("bundleContents"),n}}}}}]);

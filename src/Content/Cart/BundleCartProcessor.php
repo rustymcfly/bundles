@@ -27,14 +27,17 @@ class BundleCartProcessor implements CartProcessorInterface, CartDataCollectorIn
     {
         $items = new LineItemCollection($original->getLineItems()->filterFlatByType(BundleLineItemFactoryHandler::TYPE));
 
-        foreach ($items as $item) {
+        foreach ($items as $key => $item) {
             /**
              * @var $product SalesChannelProductEntity
              */
             $product = $data->get($this->buildKey($item));
-
+            if(!$product) {
+                $original->remove($key);
+                continue;
+            }
             $item->setLabel($product->getTranslation('name'));
-            $item->setCover($product->getCover()->getMedia());
+            $item->setCover($product->getCover()?->getMedia());
 
             if ($product->getCustomFieldsValue('calculatePriceByChildren')) {
                 $childPrices = $item->getChildren()->getPrices()->sum();
